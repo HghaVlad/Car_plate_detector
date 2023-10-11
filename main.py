@@ -28,7 +28,7 @@ def get_yolo_boxes(image: Image, model: YOLO):
     return boxes
 
 
-def crop_image(image: Image):
+def crop_image(image: Image, boxes):
     car_plates = []
     for box in boxes:
         x1, y1, x2, y2 = map(lambda x: round(x.item()), box[:4])
@@ -67,8 +67,7 @@ def clear_format(recognised_string: str) -> str:
 
 
 
-
-if __name__ == "__main__":
+def main():
     detect_model = init_yolo()
     ocr_model = init_paddleocr()
     current_image = Image.open(ORGINAL_IMG_PATH)
@@ -83,3 +82,6 @@ if __name__ == "__main__":
 
     output_image = draw_box(boxes, labels, current_image)
     output_image.save(RESULT_PATH + "\\frame_end.png")
+
+if __name__ == "__main__":
+    main()
