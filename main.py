@@ -21,14 +21,14 @@ def init_yolo() -> YOLO:
     return model
 
 
-def get_yolo_boxes(image: Image, model: YOLO) -> Tensor:
+def get_yolo_boxes(image: Image, model: YOLO):
     result = model.predict(image, verbose=False)
     boxes = result[0].boxes.data
     print(f"Found {len(boxes)} car plates")
     return boxes
 
 
-def crop_image(image: Image, boxes: Tensor):
+def crop_image(image: Image):
     car_plates = []
     for box in boxes:
         x1, y1, x2, y2 = map(lambda x: round(x.item()), box[:4])
