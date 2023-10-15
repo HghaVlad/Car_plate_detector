@@ -3,6 +3,7 @@ from ultralytics import YOLO
 from paddleocr import PaddleOCR
 from PIL import Image, ImageDraw, ImageFont
 from torch import Tensor
+print("Libraries have imported")
 
 
 YOLO_MODEL_PT = "yolosmall7.pt"
@@ -12,7 +13,7 @@ ORGINAL_IMG_PATH = "test.jpg"
 RESULT_PATH = "images"
 
 
-TEXT_FONT = ImageFont.truetype("arial.ttf", 40)
+TEXT_FONT = ImageFont.truetype("fonts/Roboto.ttf", 40)
 TEXT_COLOUR = "green"
 
 def init_yolo() -> YOLO:
